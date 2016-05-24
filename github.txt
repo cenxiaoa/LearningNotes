@@ -1,0 +1,86 @@
+自己学习github笔记
+1、 注册，
+2、 创建主分支master，
+3、 上传文件，提交
+4、 创建分支branch，
+5、 修改文件，提交即commit changges
+6、  Pull Request：向主分支请求提交当前分支的修改，会把当前分支与主分支比较，会提示修改（增删改）内容（红色，绿色），因此，可以看到自己对主分支做了哪些修改，确认后将会向主分支提交，
+7、 Merge your Pull Request：合并请求，将刚才提交的修改真正地修改到主分支里，到这里可以删除分支了，因为刚才的分支已经和并到主分支里了，没有利用价值了（如果想继续修改，就重新对主分支创建分支吧）。
+
+疑问：
+1、 分支需要被删除吗？（留着没用。。每次新的修改应该根据最新的master创建分支）
+2、 如果多人开发，提交的时候发现主分支已经被其他人修改了会怎么样？（见下面第8步）
+3、 如何回滚代码版本。
+20160521
+
+
+
+Github win客户端学习笔记（参考http://www.ihref.com/read-16514.html）
+1、 登陆
+2、 设置configure git，输入了用户名cenxiaoa和邮箱376951126@qq.com
+3、 可以创建或克隆项目了，要选自己本地的路径，比如D盘，会在本地创建克隆版本
+4、 创建分支branch
+4、 在本地文件里面修改或者添加新的文本。
+5、 提交文件，commit，
+6、 Pull request同上
+7、 Merge同上
+8、 sync把本地文件和服务器上的项目同步（每天打开github做的第一件事就应该是去服务器上同步最新的代码自己的或者官方的，当自己的部分全部修改完后再请求合并服务器，否则应该提交到自己的分支），然后再重复上面的步骤（创建分支，提交修改，请求合并，合并），如果提交的时候发现自己的版本跟服务器原始版本不一样（产生冲突），应该由管理员来管理冲突了。
+
+疑问：
+1、 管理员如何解决冲突？（命令行，）
+2、 ==分割线上方是本地数据库的内容, 
+下方是远程数据库的编辑内容。
+
+
+
+Github 命令行学习笔记
+1、 使用git shell
+2、 解决冲突：
+Step 1: From your project repository, bring in the changes and test.
+git fetch origin  #抓取远程仓库更新
+git checkout -b study_note origin/study_note2 #建立本地的study_note分支追踪远程仓库的study_note2分支 
+git merge master #将远程主分支合并到本地当前分支
+Step 2: Merge the changes and update on GitHub.
+git checkout master //取出master版本的head
+git merge --no-ff study_note  # 抓取远程仓库study_note分支更新并合并到本地，不要快进合并
+git push origin master # 将本地主分支推到远程主分支
+首先要从主分支获取差异到本地，然后在本地修改过后，重新提交，合并
+注意：step1就是从主分支获取差异到本地，在本地解决冲突后，要重新commit,然后step2才能成功合并
+20160523
+
+
+
+git命令行学习（http://www.jb51.net/article/70729.htm）
+1、安装git： yum install git
+2、生成ssh-key：ssh-keygen -t rsa -C "376951126@qq.com"
+3、增加远程库：git remote add origin git@github.com:cenxiaoa/github-study_note.git或者
+克隆：git clone https://github.com/cenxiaoa/LearningNotes.git
+4、修改后添加本地索引：git add .
+5、提交到本地:git commit
+6、提交到服务器：git push -u origin master
+7、下载远程更新：git pull -u origin master
+
+分支：
+1、建立分支：git branch testbranch
+2、切换 testbranch为当前分支：git checkout testbranch
+3、add、commit
+3、提交到testbranch分支：git push -u origin testbranch
+
+回滚：
+暂时回滚到某个版本：
+1、git log查看比如：
+[gcmooc@localhost LearningNotes]$ git log
+commit 3265331466f564271639d7e06fde563cdd44b621
+Author: cenxiaoa <376951126@qq.com>
+Date:   Tue May 24 19:37:13 2016 +0800
+
+    20160524
+
+commit c9bae53531ad0025444cd0db47d0933e0d553d45
+Author: cenxiao <376951126@qq.com>
+Date:   Tue May 24 19:29:02 2016 +0800
+
+    Initial commit
+2、回到某个版本：git checkout c9bae53（commit前7位）
+回滚到主分支：git checkout master
+20160524

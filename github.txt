@@ -56,7 +56,7 @@ git命令行学习（http://www.jb51.net/article/70729.htm）
 3、增加远程库：git remote add origin git@github.com:cenxiaoa/github-study_note.git或者
 克隆：git clone https://github.com/cenxiaoa/LearningNotes.git
 4、修改后添加本地索引：git add .
-5、提交到本地:git commit
+5、提交到本地:git commit -m 'ok'
 6、提交到服务器：git push -u origin master
 7、下载远程更新：git pull -u origin master
 
